@@ -1,0 +1,58 @@
+import { TaskType } from './task-types.js';
+
+const IMAGE_EXT = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'];
+const VIDEO_EXT = ['.mp4', '.mov', '.avi', '.mkv', '.webm'];
+
+function scoreKeywords(text, keys, base, perHit) {
+  let hits = 0;
+  for (const key of keys) {
+    if (text.includes(key)) hits += 1;
+  }
+  return base + hits * perHit;
+}
+
+export class TaskClassifier {
+  classify({ prompt = '', attachmentName = '' }) {
+    const text = String(prompt).toLowerCase();
+    const attachment = String(attachmentName).toLowerCase();
+    const combined = `${text} ${attachment}`;
+
+    const scores = {
+      [TaskType.TEXT]: 0.2,
+      [TaskType.CODE]: scoreKeywords(combined, [
+        'code', 'function', 'api', 'bug', 'debug', 'flutter', 'dart',
+        'python', 'javascript', 'typescript', 'sql', 'refactor', 'syntax',
+      ], 0.15, 0.18),
+      [TaskType.IMAGE]: IMAGE_EXT.some((ext) => attachment.endsWith(ext))
+        ? 0.95
+        : scoreKeywords(combined, [
+            'image', 'picture', 'photo', 'illustration', 'draw', 'logo', 'icon',
+          ], 0.1, 0.2),
+      [TaskType.VIDEO]: VIDEO_EXT.some((ext) => attachment.endsWith(ext))
+        ? 0.95
+        : scoreKeywords(combined, [
+            'video', 'clip', 'animation', 'motion', 'film', 'footage', 'mp4',
+          ], 0.1, 0.22),
+      [TaskType.RESEARCH]: scoreKeywords(combined, [
+        'research', 'study', 'analyze', 'report', 'survey', 'paper', 'sources',
+        'market', 'competitor', 'benchmark', 'investigate',
+      ], 0.12, 0.17),
+    };
+
+    let best = TaskType.TEXT;
+    let bestScore = scores[TaskType.TEXT];
+
+    for (const [type, value] of Object.entries(scores)) {
+      if (value > bestScore) {
+        bestScore = value;
+        best = type;
+      }
+    }
+
+    return {
+      taskType: best,
+      confidence: Math.round(Math.min(Math.max(bestScore, 0.35), 1) * 100) / 100,
+      signals: [`task:${best}`],
+    };
+  }
+}
