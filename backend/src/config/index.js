@@ -34,6 +34,12 @@ export const config = {
     timeoutMs: Number(process.env.GEMINI_TIMEOUT_MS ?? 30000),
     maxRetries: Number(process.env.GEMINI_MAX_RETRIES ?? 3),
   },
+  groq: {
+    apiKey: process.env.GROQ_API_KEY ?? '',
+    model: process.env.GROQ_MODEL ?? 'llama-3.3-70b-versatile',
+    timeoutMs: Number(process.env.GROQ_TIMEOUT_MS ?? 30000),
+    maxRetries: Number(process.env.GROQ_MAX_RETRIES ?? 3),
+  },
 };
 
 export function assertConfig() {
