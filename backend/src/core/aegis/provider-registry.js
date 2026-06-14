@@ -1,5 +1,5 @@
 import { TaskType } from './task-types.js';
-import { GeminiProvider } from './providers/gemini-provider.js';
+import { GroqProvider } from './providers/groq-provider.js';
 import { CodeProvider } from './providers/code-provider.js';
 import { ImageProvider } from './providers/image-provider.js';
 import { VideoProvider } from './providers/video-provider.js';
@@ -8,7 +8,7 @@ import { ResearchProvider } from './providers/research-provider.js';
 export class ProviderRegistry {
   constructor(providers) {
     const list = providers ?? [
-      new GeminiProvider(),
+      new GroqProvider(),
       new CodeProvider(),
       new ImageProvider(),
       new VideoProvider(),
