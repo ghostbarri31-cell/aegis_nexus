@@ -9,6 +9,7 @@ import '../../../../core/widgets/aegis_logo.dart';
 import '../../../../core/widgets/glass_container.dart';
 import '../../../chat/presentation/providers/chat_provider.dart';
 import '../../domain/models/conversation_item.dart';
+import '../../../workspaces/presentation/widgets/workspace_nav_section.dart';
 
 class ConversationSidebar extends StatelessWidget {
   const ConversationSidebar({
@@ -128,6 +129,7 @@ class ConversationSidebar extends StatelessWidget {
                   ],
                 ),
               ),
+            WorkspaceNavSection(expanded: expanded, currentPath: location),
             _SidebarNav(expanded: expanded, currentPath: location),
           ],
         ),
