@@ -10,6 +10,8 @@ class RoutingPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
@@ -17,7 +19,7 @@ class RoutingPanel extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.accent.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.glassBorder),
+        border: Border.all(color: colors.glassBorder),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +60,7 @@ class _Row extends StatelessWidget {
           child: Text(
             '$label:',
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.textMuted,
+                  color: AppColors.of(context).textMuted,
                   fontWeight: FontWeight.w600,
                 ),
           ),
@@ -67,7 +69,7 @@ class _Row extends StatelessWidget {
           child: Text(
             value,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textPrimary,
+                  color: AppColors.of(context).textPrimary,
                   fontWeight: FontWeight.w500,
                 ),
           ),

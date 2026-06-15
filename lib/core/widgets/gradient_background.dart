@@ -9,11 +9,14 @@ class GradientBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Stack(
       fit: StackFit.expand,
       children: [
-        const DecoratedBox(
-          decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
+        DecoratedBox(
+          decoration: BoxDecoration(gradient: colors.backgroundGradient),
         ),
         Positioned(
           top: -120,
@@ -23,7 +26,7 @@ class GradientBackground extends StatelessWidget {
             height: 320,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.accent.withValues(alpha: 0.12),
+              color: AppColors.accent.withValues(alpha: isDark ? 0.12 : 0.06),
             ),
           ),
         ),
@@ -35,7 +38,7 @@ class GradientBackground extends StatelessWidget {
             height: 280,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.accentSecondary.withValues(alpha: 0.08),
+              color: AppColors.accentSecondary.withValues(alpha: isDark ? 0.08 : 0.04),
             ),
           ),
         ),

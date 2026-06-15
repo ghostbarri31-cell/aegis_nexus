@@ -109,7 +109,7 @@ class SettingsScreen extends StatelessWidget {
                 Text(
                   'Version 1.0.0',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: AppColors.textMuted,
+                        color: AppColors.of(context).textMuted,
                       ),
                 ),
               ],
@@ -127,7 +127,7 @@ class SettingsScreen extends StatelessWidget {
   ) async {
     final selected = await showModalBottomSheet<String>(
       context: context,
-      backgroundColor: AppColors.surfaceElevated,
+      backgroundColor: AppColors.of(context).surfaceElevated,
       builder: (ctx) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -163,7 +163,7 @@ class SettingsScreen extends StatelessWidget {
 
     final selected = await showModalBottomSheet<String>(
       context: context,
-      backgroundColor: AppColors.surfaceElevated,
+      backgroundColor: AppColors.of(context).surfaceElevated,
       builder: (ctx) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -261,7 +261,7 @@ class _Section extends StatelessWidget {
           Text(
             title.toUpperCase(),
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.textMuted,
+                  color: AppColors.of(context).textMuted,
                   letterSpacing: 1.2,
                   fontWeight: FontWeight.w700,
                 ),
@@ -292,7 +292,7 @@ class _SwitchTile extends StatelessWidget {
     return SwitchListTile(
       contentPadding: EdgeInsets.zero,
       title: Text(title),
-      subtitle: Text(subtitle, style: const TextStyle(color: AppColors.textMuted)),
+      subtitle: Text(subtitle, style: TextStyle(color: AppColors.of(context).textMuted)),
       value: value,
       activeTrackColor: AppColors.accent,
       onChanged: (v) => onChanged(v),

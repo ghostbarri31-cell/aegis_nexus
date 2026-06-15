@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Text(
                             user.email,
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.textSecondary,
+                                  color: AppColors.of(context).textSecondary,
                                 ),
                           ),
                           if (user.bio.isNotEmpty) ...[
@@ -181,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               user.bio,
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: AppColors.textMuted,
+                                    color: AppColors.of(context).textMuted,
                                   ),
                             ),
                           ],
@@ -189,8 +189,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(height: 12),
                         Chip(
                           label: Text(user.role.toUpperCase()),
-                          backgroundColor: AppColors.glassFill,
-                          side: const BorderSide(color: AppColors.glassBorder),
+                          backgroundColor: AppColors.of(context).glassFill,
+                          side: BorderSide(color: AppColors.of(context).glassBorder),
                         ),
                         const SizedBox(height: 24),
                         const Divider(),
@@ -308,15 +308,17 @@ class _InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           width: 100,
-          child: Text(label, style: const TextStyle(color: AppColors.textMuted)),
+          child: Text(label, style: TextStyle(color: colors.textMuted)),
         ),
         Expanded(
-          child: Text(value, style: const TextStyle(color: AppColors.textSecondary)),
+          child: Text(value, style: TextStyle(color: colors.textSecondary)),
         ),
       ],
     );

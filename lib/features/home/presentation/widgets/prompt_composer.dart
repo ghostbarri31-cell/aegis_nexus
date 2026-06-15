@@ -149,8 +149,8 @@ class _PromptComposerState extends State<PromptComposer> {
                 onDeleted: widget.enabled
                     ? () => setState(() => _attachedFileName = null)
                     : null,
-                backgroundColor: AppColors.glassFill,
-                side: const BorderSide(color: AppColors.glassBorder),
+                backgroundColor: AppColors.of(context).glassFill,
+                side: BorderSide(color: AppColors.of(context).glassBorder),
               ),
             ),
           if (_voiceActive)
@@ -233,10 +233,10 @@ class _ActionButton extends StatelessWidget {
       icon: Icon(icon, size: 20),
       label: Text(label),
       style: OutlinedButton.styleFrom(
-        foregroundColor: active ? AppColors.accent : AppColors.textSecondary,
-        disabledForegroundColor: AppColors.textMuted,
+        foregroundColor: active ? AppColors.accent : AppColors.of(context).textSecondary,
+        disabledForegroundColor: AppColors.of(context).textMuted,
         side: BorderSide(
-          color: active ? AppColors.accent : AppColors.glassBorder,
+          color: active ? AppColors.accent : AppColors.of(context).glassBorder,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -264,8 +264,8 @@ class _SendButton extends StatelessWidget {
                 ? AppColors.accentGradient
                 : LinearGradient(
                     colors: [
-                      AppColors.textMuted.withValues(alpha: 0.4),
-                      AppColors.textMuted.withValues(alpha: 0.3),
+                      AppColors.of(context).textMuted.withValues(alpha: 0.4),
+                      AppColors.of(context).textMuted.withValues(alpha: 0.3),
                     ],
                   ),
             borderRadius: BorderRadius.circular(14),

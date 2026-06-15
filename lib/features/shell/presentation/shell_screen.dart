@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/gradient_background.dart';
 import '../../conversations/presentation/widgets/conversation_sidebar.dart';
 
@@ -26,7 +27,7 @@ class _ShellScreenState extends State<ShellScreen> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           drawer: Drawer(
-            backgroundColor: Colors.transparent,
+            backgroundColor: AppColors.of(context).sidebar,
             child: ConversationSidebar(expanded: true),
           ),
           appBar: AppBar(

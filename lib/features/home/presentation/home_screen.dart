@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: AppColors.textSecondary,
+                          color: AppColors.of(context).textSecondary,
                         ),
                   ),
                 if (showWelcome) ...[
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                             'Start typing, use voice, or upload a file.',
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.textMuted,
+                                  color: AppColors.of(context).textMuted,
                                 ),
                           ),
                         ),

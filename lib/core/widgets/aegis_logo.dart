@@ -18,6 +18,8 @@ class AegisLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     final icon = Container(
       width: size,
       height: size,
@@ -71,7 +73,7 @@ class AegisLogo extends StatelessWidget {
             Text(
               AppConstants.appTagline,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.textMuted,
+                    color: colors.textMuted,
                     letterSpacing: 0.5,
                   ),
             ),

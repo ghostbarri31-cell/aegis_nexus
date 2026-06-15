@@ -23,17 +23,21 @@ abstract final class AppTheme {
     final base = ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      scaffoldBackgroundColor: const Color(0xFFF8FAFC),
+      scaffoldBackgroundColor: AppColors.lightBackground,
       colorScheme: const ColorScheme.light(
         primary: AppColors.accent,
         secondary: AppColors.accentSecondary,
+        surface: AppColors.lightSurface,
+        onSurface: AppColors.lightTextPrimary,
       ),
     );
 
-    return _build(base, const Color(0xFF111827));
+    return _build(base, AppColors.lightTextPrimary);
   }
 
   static ThemeData _build(ThemeData base, Color textColor) {
+    final isDark = base.brightness == Brightness.dark;
+
     return base.copyWith(
       textTheme: GoogleFonts.interTextTheme(base.textTheme).apply(
         bodyColor: textColor,
@@ -45,37 +49,35 @@ abstract final class AppTheme {
         centerTitle: false,
       ),
       iconTheme: IconThemeData(
-        color: base.brightness == Brightness.dark
-            ? AppColors.textSecondary
-            : const Color(0xFF6B7280),
+        color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary,
       ),
-      dividerColor: AppColors.glassBorder,
+      dividerColor: isDark ? AppColors.glassBorder : AppColors.lightGlassBorder,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: base.brightness == Brightness.dark
-            ? AppColors.glassFill
-            : const Color(0x0A000000),
+        fillColor: isDark ? AppColors.glassFill : AppColors.lightGlassFill,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppColors.glassBorder),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.glassBorder : AppColors.lightGlassBorder,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppColors.glassBorder),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.glassBorder : AppColors.lightGlassBorder,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
         ),
         hintStyle: TextStyle(
-          color: base.brightness == Brightness.dark
-              ? AppColors.textMuted
-              : const Color(0xFF9CA3AF),
+          color: isDark ? AppColors.textMuted : AppColors.lightTextMuted,
         ),
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: base.brightness == Brightness.dark
+        backgroundColor: isDark
             ? AppColors.surfaceElevated
             : const Color(0xFF1F2937),
       ),

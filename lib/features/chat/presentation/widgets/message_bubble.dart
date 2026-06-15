@@ -34,7 +34,7 @@ class MessageBubble extends StatelessWidget {
             Text(
               time,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.textMuted,
+                    color: AppColors.of(context).textMuted,
                     fontSize: 11,
                   ),
             ),
@@ -95,7 +95,8 @@ class _MessageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = lightText ? Colors.white : AppColors.textPrimary;
+    final colors = AppColors.of(context);
+    final textColor = lightText ? Colors.white : colors.textPrimary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +117,7 @@ class _MessageBody extends StatelessWidget {
                 child: Text(
                   message.attachmentName!,
                   style: TextStyle(
-                    color: lightText ? Colors.white70 : AppColors.textSecondary,
+                    color: lightText ? Colors.white70 : colors.textSecondary,
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
                   ),
