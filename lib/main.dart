@@ -8,6 +8,11 @@ import 'features/auth/presentation/providers/auth_provider.dart';
 import 'features/chat/presentation/providers/chat_provider.dart';
 import 'features/settings/presentation/providers/settings_provider.dart';
 import 'features/workspaces/presentation/providers/workspace_provider.dart';
+import 'features/workspaces/presentation/providers/research_provider.dart';
+import 'features/workspaces/presentation/providers/images_provider.dart';
+import 'features/workspaces/presentation/providers/debate_provider.dart';
+import 'features/workspaces/presentation/providers/projects_provider.dart';
+import 'features/workspaces/presentation/providers/library_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +34,21 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider<WorkspaceProvider>(
           create: (_) => WorkspaceProvider(),
+        ),
+        ChangeNotifierProvider<ResearchProvider>(
+          create: (_) => ResearchProvider(),
+        ),
+        ChangeNotifierProvider<ImagesProvider>(
+          create: (_) => ImagesProvider(),
+        ),
+        ChangeNotifierProvider<DebateProvider>(
+          create: (_) => DebateProvider(),
+        ),
+        ChangeNotifierProvider<ProjectsProvider>(
+          create: (_) => ProjectsProvider(),
+        ),
+        ChangeNotifierProvider<LibraryProvider>(
+          create: (_) => LibraryProvider(),
         ),
       ],
       child: const AegisNexusApp(),
